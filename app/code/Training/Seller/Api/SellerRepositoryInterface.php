@@ -36,7 +36,7 @@ interface SellerRepositoryInterface
      * @return \Training\Seller\Api\Data\SellerInterface
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
-    public function getByIdentifier($identifier);
+    public function getByIdentifier($objectIdentifier);
 
 
     /**

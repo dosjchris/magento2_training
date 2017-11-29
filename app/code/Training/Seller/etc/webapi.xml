@@ -31,7 +31,7 @@
         </resources>
     </route>
 
-    <route url="/V1/seller/id/:objetId" method="DELETE">
+    <route url="/V1/seller/id/:objectId" method="DELETE">
         <service class="Training\Seller\Api\SellerRepositoryInterface" method="deleteById"/>
         <resources>
             <resource ref="Training_Seller::manage"/>

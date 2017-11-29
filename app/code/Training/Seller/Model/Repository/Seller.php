@@ -53,10 +53,10 @@ class Seller implements SellerRepositoryInterface
     /**
      * @inheritdoc
      */
-    public function getByIdentifier($identifier)
+    public function getByIdentifier($objectIdentifier)
     {
 
-        return $this->sellerRepositoryManagement->getEntityByIdentifier($identifier);
+        return $this->sellerRepositoryManagement->getEntityByIdentifier($objectIdentifier);
     }
 
     /**
