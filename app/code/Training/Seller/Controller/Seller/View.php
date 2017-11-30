@@ -7,7 +7,7 @@ namespace Training\Seller\Controller\Seller;
 
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Controller\ResultFactory;
-use Magento\Framework\Controller\Result\Raw as ResultRaw;
+use Magento\Framework\View\Result\Page as ResultPage;
 use Magento\Framework\Exception\NotFoundException;
 
 /**
@@ -21,7 +21,7 @@ class View extends AbstractAction
     /**
      * Execute the action
      *
-     * @return ResultRaw
+     * @return ResultPage
      * @throws NotFoundException
      */
     public function execute()
@@ -39,17 +39,11 @@ class View extends AbstractAction
             throw new NotFoundException(__('The identifier does not exist'));
         }
 
-        $html = '
-<h1>'.$seller->getName().'</h1>
-<hr />
-<p>#'.$seller->getIdentifier().'</p>
-<hr />
-<a href="/sellers.html">back to the list</a>
-';
+        $this->registry->register('current_seller', $seller);
 
-        /** @var ResultRaw $result */
-        $result = $this->resultFactory->create(ResultFactory::TYPE_RAW);
-        $result->setContents($html);
+        /** @var ResultPage $result */
+        $result = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
+        $result->getConfig()->getTitle()->set(__('Seller "%1"', $seller->getName()));
 
         return $result;
     }
