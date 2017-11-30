@@ -15,5 +15,6 @@
               template="Training_Seller::seller/view.phtml"
       />
     </referenceContainer>
+      <referenceBlock name="training.seller.content.top" remove="true" />
   </body>
 </page>

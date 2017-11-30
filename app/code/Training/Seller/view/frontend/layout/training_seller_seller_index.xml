@@ -25,5 +25,6 @@
                 cacheable="false"
             />
         </referenceContainer>
+        <referenceBlock name="training.seller.content.top" remove="true" />
     </body>
 </page>
