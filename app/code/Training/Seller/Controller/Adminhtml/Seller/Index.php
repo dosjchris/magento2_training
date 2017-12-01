@@ -6,7 +6,7 @@
 namespace Training\Seller\Controller\Adminhtml\Seller;
 
 use Magento\Framework\Controller\ResultFactory;
-use Magento\Framework\Controller\Result\Raw as ResultRaw;
+use Magento\Backend\Model\View\Result\Page as ResultPage;
 
 /**
  * Admin Action : seller/index
@@ -19,19 +19,17 @@ class Index extends AbstractAction
     /**
      * Execute the action
      *
-     * @return ResultRaw
+     * @return ResultPage
      */
     public function execute()
     {
-        $model = $this->modelRepository->getByIdentifier('main');
+        $breadMain = __('Manage Sellers');
 
+        /** @var ResultPage $resultPage */
+        $resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
+        $resultPage->setActiveMenu('Training_Seller::manage');
+        $resultPage->getConfig()->getTitle()->prepend($breadMain);
 
-        $html = 'Seller: '.$model->getName();
-
-        /** @var ResultRaw $result */
-        $result = $this->resultFactory->create(ResultFactory::TYPE_RAW);
-        $result->setContents($html);
-
-        return $result;
+        return $resultPage;
     }
 }
