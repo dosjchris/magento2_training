@@ -27,11 +27,11 @@ class UpgradeSchema implements UpgradeSchemaInterface
     public function upgrade(SchemaSetupInterface $setup, ModuleContextInterface $context)
     {
         if (version_compare($context->getVersion(), '1.0.1', '<')) {
-            $this->addMetaTitleField($setup);
+            $this->addDescriptionColumn($setup);
         }
     }
 
-    protected function addMetaTitleField(SchemaSetupInterface $setup)
+    protected function addDescriptionColumn(SchemaSetupInterface $setup)
     {
         $setup->getConnection()->addColumn(
             $setup->getTable(SellerInterface::TABLE_NAME),
