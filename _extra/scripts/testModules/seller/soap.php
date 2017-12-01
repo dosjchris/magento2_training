@@ -17,6 +17,7 @@ $object = [
     'object' => [
         'identifier' => 'cd1',
         'name'       => 'Christian DOSJOUB 1',
+        'description' => 'My Description'
     ]
 ];
 

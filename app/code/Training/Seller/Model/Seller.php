@@ -99,6 +99,18 @@ class Seller extends AbstractModel implements SellerInterface, IdentityInterface
     }
 
     /**
+     * Get field: description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return (string) $this->getData(self::FIELD_DESCRIPTION);
+
+    }
+
+
+    /**
      * Set field: seller_id
      *
      * @param int $value
@@ -159,11 +171,38 @@ class Seller extends AbstractModel implements SellerInterface, IdentityInterface
          return $this->setData(self::FIELD_UPDATED_AT, (string) $value);
     }
 
+    /**
+     * Set field: Description
+     *
+     * @param string $value
+     *
+     * @return SellerInterface
+     */
+    public function setDescription($value)
+    {
+        if ($value !== null) {
+            $value = (string) $value;
+        }
+
+        return $this->setData(self::FIELD_DESCRIPTION, $value);
+    }
+
+
     public function populateFromArray(array $values)
     {
         $this->setIdentifier($values['identifier']);
         $this->setName($values['name']);
+        if (array_key_exists("description",$values)) {
+           $this->setDescription($values['description']);
+        }
 
         return $this;
     }
+
+    /**
+     * Get field: description
+     *
+     * @return string|null
+     */
+
 }
